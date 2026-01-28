@@ -1,4 +1,8 @@
-print("="*40)
-print("Nothing implemented yet in Task/flight.py")
-print("Please implement the required functionality.")
-print("="*40)
+from pymavlink import mavutil
+
+# Establish connection
+master = mavutil.mavlink_connection('udp:0.0.0.0:14550')
+
+# Wait for heartbeat to confirm connection
+master.wait_heartbeat()
+print(f"Connected to system {master.target_system}, component {master.target_component}")
